@@ -14,7 +14,7 @@ def board_search(board, word_trie):
                     if letter == 'Q':
                         child_node = child_node.get_child('U')
                         if not child_node:
-                            return
+                            continue
 
                     _search(neighbour_position, child_node, visited_positions + [neighbour_position])
 

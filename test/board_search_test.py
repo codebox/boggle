@@ -5,13 +5,14 @@ from trie import Trie
 
 class BoardSearchTest(unittest.TestCase):
     def setUp(self):
-        self.board = Board([['C', 'A', 'R'], ['D', 'O', 'T'], ['X', 'G', 'X']])
         self.trie = Trie()
 
     def test_search_with_no_words(self):
-        self.assertEquals(set(), board_search(self.board, self.trie))
+        board = Board([['C', 'A', 'R'], ['D', 'O', 'T'], ['X', 'G', 'X']])
+        self.assertEquals(set(), board_search(board, self.trie))
 
     def test_search_with_words(self):
+        board = Board([['C', 'A', 'R'], ['D', 'O', 'T'], ['X', 'G', 'X']])
         self.trie.add('CAT')
         self.trie.add('CAR')
         self.trie.add('CART')
@@ -20,15 +21,24 @@ class BoardSearchTest(unittest.TestCase):
         self.trie.add('ABSENT')
         self.trie.add('DOGS')
 
-        results = board_search(self.board, self.trie)
+        results = board_search(board, self.trie)
 
         self.assertEquals(set(['CAT', 'CAR', 'CART', 'DO', 'DOG']), results)
 
     def test_letter_q(self):
-        self.board = Board([['Q', 'I'], ['T', 'X']])
+        board = Board([['Q', 'I'], ['T', 'X']])
         self.trie.add('QUIT')
+        self.trie.add('QIT')
 
-        self.assertEquals(set(['QUIT']), board_search(self.board, self.trie))
+        self.assertEquals(set(['QUIT']), board_search(board, self.trie))
+
+    def test_letter_q_bug(self):
+        board = Board([['Q', 'A'], ['B', 'O']])
+        self.trie.add('BQ')
+        self.trie.add('BA')
+
+        self.assertEquals(set(['BA']), board_search(board, self.trie))
+
 
 if __name__ == '__main__':
     unittest.main()        
