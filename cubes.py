@@ -1,7 +1,7 @@
 import random
 
 class Cubes:
-    CUBES = map(list, [
+    CUBES = list(map(list, [
         'IBALTY',
         'BAJOQM',
         'GLYUEK',
@@ -18,10 +18,10 @@ class Cubes:
         'PIESHN',
         'FEYHIE',
         'SHRMAO'
-    ])
+    ]))
 
     def _make_row(self, l):
-        return map(lambda t : random.choice(t), l)
+        return list(map(lambda t : random.choice(t), l))
 
     def shuffle(self):
         return [

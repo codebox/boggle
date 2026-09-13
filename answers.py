@@ -22,7 +22,7 @@ class Answers:
         for word in sorted(self.words):
             l = len(word)
 
-            if not words_by_length.has_key(l):
+            if l not in words_by_length:
                 words_by_length[l] = []
 
             words_by_length[l].append(word)

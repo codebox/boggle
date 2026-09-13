@@ -9,7 +9,7 @@ class BoardSearchTest(unittest.TestCase):
 
     def test_search_with_no_words(self):
         board = Board([['C', 'A', 'R'], ['D', 'O', 'T'], ['X', 'G', 'X']])
-        self.assertEquals(set(), board_search(board, self.trie))
+        self.assertEqual(set(), board_search(board, self.trie))
 
     def test_search_with_words(self):
         board = Board([['C', 'A', 'R'], ['D', 'O', 'T'], ['X', 'G', 'X']])
@@ -23,21 +23,21 @@ class BoardSearchTest(unittest.TestCase):
 
         results = board_search(board, self.trie)
 
-        self.assertEquals(set(['CAT', 'CAR', 'CART', 'DO', 'DOG']), results)
+        self.assertEqual(set(['CAT', 'CAR', 'CART', 'DO', 'DOG']), results)
 
     def test_letter_q(self):
         board = Board([['Q', 'I'], ['T', 'X']])
         self.trie.add('QUIT')
         self.trie.add('QIT')
 
-        self.assertEquals(set(['QUIT']), board_search(board, self.trie))
+        self.assertEqual(set(['QUIT']), board_search(board, self.trie))
 
     def test_letter_q_bug(self):
         board = Board([['Q', 'A'], ['B', 'O']])
         self.trie.add('BQ')
         self.trie.add('BA')
 
-        self.assertEquals(set(['BA']), board_search(board, self.trie))
+        self.assertEqual(set(['BA']), board_search(board, self.trie))
 
 
 if __name__ == '__main__':

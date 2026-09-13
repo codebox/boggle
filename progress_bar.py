@@ -14,7 +14,7 @@ class ProgressBar:
         if self.previous != None:
             output += '\b' * (len(self._build_text(self.previous)) + 1)
         output += self._build_text(new_value)
-        print output,
+        print(output, end=' ')
         sys.stdout.flush()
 
         self.previous = self.value
@@ -22,4 +22,4 @@ class ProgressBar:
 
     def finish(self):
         self.show(self.l)
-        print ''
+        print('')

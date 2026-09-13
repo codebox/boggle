@@ -28,7 +28,7 @@ class Board:
             for r in range(row-1, row+2):
                 neighbours.append((c, r))
         neighbours.remove((col,row))
-        return filter(lambda t: t[0] in range(0, self.size) and t[1] in range(0, self.size), neighbours)
+        return list(filter(lambda t: t[0] in range(0, self.size) and t[1] in range(0, self.size), neighbours))
 
     def get_neighbours(self, col, row):
         return self.neighbours[col][row]

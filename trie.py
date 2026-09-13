@@ -25,7 +25,7 @@ class Node:
         self.children = {}
 
     def get_child(self, letter):
-        if self.children.has_key(letter):
+        if letter in self.children:
             return self.children.get(letter)
 
     def add_child(self, letter):
